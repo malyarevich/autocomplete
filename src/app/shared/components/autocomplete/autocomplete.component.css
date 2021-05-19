@@ -1,0 +1,11 @@
+.Autocomplete {
+  box-sizing: border-box;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.Autocomplete__spinnerBox {
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+}
