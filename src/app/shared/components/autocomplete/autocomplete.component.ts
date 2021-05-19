@@ -18,6 +18,7 @@ export class AutocompleteComponent implements OnChanges, OnInit {
   filteredOptions: Observable<string[]> | undefined;
   $optionsUpdated: Subject<string> = new Subject();
   $isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  $hasResults: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor() { }
 
@@ -34,9 +35,10 @@ export class AutocompleteComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.options) {
+    if (changes.options && !changes.options.isFirstChange()) {
       this.$optionsUpdated.next(this.searchControl.value);
       this.$isLoading.next(false);
+      this.$hasResults.next(!!(changes.options.currentValue?.length > 0));
     }
   }
 

@@ -11,9 +11,14 @@
   >
 
   <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngIf="$isLoading | async">
+    <mat-option *ngIf="$isLoading | async" disabled="true">
       <div class="Autocomplete__spinnerBox">
         <mat-spinner strokeWidth="2" diameter="40"></mat-spinner>
+      </div>
+    </mat-option>
+    <mat-option *ngIf="!($hasResults | async)" disabled="true">
+      <div class="Autocomplete__spinnerBox">
+        No results
       </div>
     </mat-option>
     <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="selectItem(option)">

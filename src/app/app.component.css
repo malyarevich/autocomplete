@@ -1,5 +1,6 @@
 main {
-    margin: 2rem auto;
+    margin: 0 auto;
     min-width: 200px;
     max-width: 1000px;
+    padding: 2rem;
 }
